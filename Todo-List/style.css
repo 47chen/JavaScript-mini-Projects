@@ -58,6 +58,11 @@ button {
 
 }
 
+.todo-list {
+    display:flex;
+    flex-direction: column;
+}
+
 .todo-list li::before {
     content: '⃝';
     color: #0d0d0d;
