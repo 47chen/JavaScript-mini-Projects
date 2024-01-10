@@ -35,9 +35,27 @@ function addTodo() {
   render();
 }
 
-render();
-// TODO 4: delete todo function -- use span to delete todo
-
 function save() {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todoLists));
 }
+
+// TODO : check todoList
+
+listContainer.addEventListener(
+  "click",
+  (e) => {
+    console.log(todoLists);
+    if (e.target.tagName.toLowerCase() === "li") {
+      e.target.classList.toggle("checked");
+      // save();
+    } else if (e.target.tagName.toLowerCase() === "span") {
+      e.target.parentElement.remove();
+      save();
+    }
+  },
+  false
+);
+
+// TODO: Delete TodoList
+
+render();
