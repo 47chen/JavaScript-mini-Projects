@@ -5,7 +5,6 @@ const LOCAL_STORAGE_KEY = "todo.lists";
 
 let todoLists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 
-// TODO 2: render the list of todos
 function render() {
   listContainer.innerHTML = "";
   // why we set this to empty string?
@@ -14,6 +13,9 @@ function render() {
     let newTodo = document.createElement("li");
     newTodo.classList.add("todo-item");
     newTodo.innerText = todo;
+    let span = document.createElement("span");
+    span.innerHTML = "\u00d7";
+    newTodo.appendChild(span);
     listContainer.appendChild(newTodo);
   });
 }
@@ -22,7 +24,6 @@ function clearInput() {
   input.value = "";
 }
 
-// TODO 3: add new todo function
 function addTodo() {
   if (input.value === "") {
     alert("You must write something!");
@@ -37,12 +38,6 @@ function addTodo() {
 render();
 // TODO 4: delete todo function -- use span to delete todo
 
-// TODO 5: Save() using localStorage
-
 function save() {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todoLists));
-  // console.log(todoLists);
-  // console.log(JSON.stringify(todoLists));
-  // console.log(localStorage.getItem(LOCAL_STORAGE_KEY));
-  // console.log(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)));
 }
