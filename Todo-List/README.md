@@ -12,7 +12,7 @@
   - li.classList.add('todo-item')
   - listContainer.appendChild(li)
   
-  - toggle - add / remove className to the HTML tag
+  - toggle - add/remove className to the HTML tag
     - listContainer.addEventListener(
   "click",
   (e) => {
@@ -29,7 +29,7 @@
 
 - innerHTML vs innerText vs innerContent
 
-- localStorage, seesionStorage
+- localStorage, sessionStorage
   - let curList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
   - localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(listContainer.innerHTML)
-  - seessionStorage syntax same as localStorage
+  - sessionStorage syntax same as localStorage
