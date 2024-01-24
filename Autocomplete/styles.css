@@ -1,0 +1,49 @@
+/* .autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+#autocomplete-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+#autocomplete-list li {
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+#autocomplete-list li:hover {
+    background-color: #e5e5e5;
+} */
+
+.auto-complete-container {
+    display: inline-block;
+    position: relative;
+  }
+  
+  #list-container {
+    list-style: none;
+    z-index: 1;
+    background-color: antiquewhite;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* position: absolute; */
+  }
+  
+  #list-container li {
+    padding: 10px 0;
+    display: block;
+    border: 1px solid #333c;
+  }
+  
+  #list-container li:hover {
+    background-color: gray;
+  }
+  
