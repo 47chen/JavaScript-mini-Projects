@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>4 ways of Center and easy todoList</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1 style="background-color: green; font-size: 45px">
+      Center div with 4 methods
+    </h1>
+    <h2>1. Flex-Box with center in justify-content and align-items</h2>
+    <div class="outer1">
+      <div class="inner1">Flex-box</div>
+    </div>
+    <h2>2. Flex-Box with margin-auto</h2>
+    <div class="outer2">
+      <div class="inner2">margin-auto</div>
+    </div>
+    <h2>3. Position with transform:translate(-50%, -50%)</h2>
+    <div class="outer3">
+      <div class="inner3">Position with transform</div>
+    </div>
+    <h2>4. Text-align center and line-height</h2>
+    <div class="outer4">
+      <div class="inner4">Text center</div>
+    </div>
+    <h1 style="text-decoration: none">
+      ------ -----DOM TodoList----- ----- -----
+    </h1>
+    <h2>Easy todo List</h2>
+    <input type="text" id="add-to-do" />
+    <button add-btn>Add new todo</button>
+    <div>
+      <ul id="list-container">
+        <li class="list-item checked">mock data1</li>
+        <li class="list-item">mock data2</li>
+        <li>mock data3</li>
+      </ul>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

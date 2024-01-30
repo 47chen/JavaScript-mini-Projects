@@ -1,0 +1,74 @@
+* {
+    margin: 5px;
+    padding: 0;
+  }
+  
+  h2 {
+    text-decoration: underline;
+  }
+  /* 1. flex-box with centering in justify-content and align-items */
+  .outer1 {
+    background-color: antiquewhite;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* 2. flex-box with margin-auto in child element */
+  
+  .outer2 {
+    background-color: aquamarine;
+    width: 400px;
+    height: 400px;
+    display: flex;
+  }
+  
+  .inner2 {
+    margin: auto;
+  }
+  
+  /* 3. position with transition */
+  
+  .outer3 {
+    background-color: brown;
+    width: 400px;
+    height: 400px;
+    position: relative;
+  }
+  
+  .inner3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* 4. Text-align in parent, and line-height in child */
+  .outer4 {
+    background-color: blueviolet;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+  }
+  
+  .inner4 {
+    line-height: 400px;
+  }
+  /* ---- ---- ---- ---- ---- ---- -TODO List CSS - ---- ---- ---- ---- ---- ---- ---- ---- */
+  
+  .list-item {
+    width: 150px;
+    background-color: aquamarine;
+  }
+  
+  li.checked {
+    text-decoration: line-through;
+    background-color: gray;
+    list-style: circle;
+  }
+  
+  li:hover {
+    cursor: pointer;
+  }
+  
