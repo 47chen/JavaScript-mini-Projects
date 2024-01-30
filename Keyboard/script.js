@@ -107,23 +107,23 @@ const domKeyBoard = (event) => {
     if (!isGreen) $box.style.backgroundColor = "green";
     if (isGreen) $box.style.backgroundColor = "tomato";
   }
-  console.log("keyCode" + event.keyCode);
-  switch (event.keyCode) {
+  console.log("Press " + event.key + " Key");
+  switch (event.key) {
     // left
-    case 37:
+    case "ArrowLeft":
       $box.style.left = $box.offsetLeft - divMove + "px";
       break;
     // top
-    case 38:
+    case "ArrowUp":
       $box.style.top = $box.offsetTop - divMove + "px";
       break;
     // right
-    case 39: {
+    case "ArrowRight": {
       $box.style.left = $box.offsetLeft + divMove + "px";
       break;
     }
     // down
-    case 40: {
+    case "ArrowDown": {
       $box.style.top = $box.offsetTop + divMove + "px";
       break;
     }
