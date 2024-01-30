@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KeyBoard Event</title>
+
+</head>
+<body>
+    <div class="fx">
+        <div>
+            <textarea name="test-target" id="test-target" rows="5"></textarea>
+            <button type="button" name="btn-reset" id="btn-reset">reset</button>
+        </div>
+        <div class="flex">
+            <pre id="console-log"></pre>
+        </div>
+    </div>
+    <script src="script2.js">
+</script>
+<style>
+    .fx {
+        display:flex;
+        margin: 0 -20px 0 -20px;
+    }
+
+    .fx > div {
+        padding: 0 20px 0 20px;
+    }
+
+    .fx > div:first-child {
+        width: 30%;
+    }
+
+    .flex {
+        flex:1;
+    }
+
+    #test-target {
+     display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+</style>
+    </body>
+</html>
