@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>The Element Object</h1>
+<h2>The firstChild Property</h2>
+
+<p>Example list:</p>
+<ul id="myList"><li>Coffee</li><li>Tea</li><li>Tea1</li><li>Tea2</li><li>Tea3</li><li>Tea4</li></ul>
+<button id='reset' onclick="removeAllChild()">reset all child</button>
+
+<p>The HTML content of the list's first child node is:</p>
+<p id="demo"></p>
+
+
+<script>
+let text = document.getElementById("myList").firstChild.innerHTML;
+document.getElementById("demo").innerHTML = text;
+
+let btn = document.getElementById('reset');
+let list = document.getElementById('myList');
+
+const removeAllChild = () => {
+	let child = list.firstChild;
+    while(child) {
+    	list.removeChild(child);
+        child = list.firstChild;
+    }
+    alert('Ready to clear all child by traditional way');
+}
+
+
+</script>
+
+</body>
+</html>
