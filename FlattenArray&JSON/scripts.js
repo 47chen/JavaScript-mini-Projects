@@ -54,3 +54,46 @@ otherwise, it will continue on forevery(TLE)
 --- if(n === 0) return arr
 same as if(node == null) in dfs
 */
+
+/* ----  ---- Flatten Nested Object using typeof ---- ---- */
+/* 
+Algorithm:
+- iterate through key-value pair in object
+-** check whether current value is object && !Array
+- if is object, invoke recursive call which will return an object
+    - iterate through that obj and add parentkey + '.' + childkey to get a.b.c
+- if not an object, directly add key-value pair 
+
+*/
+
+const flattenObject = (obj) => {
+  const res = {};
+
+  for (const parentKey in obj) {
+    // check whether it is a object and not array
+    if (typeof obj[parentKey] === "object" && !Array.isArray(obj[parentKey])) {
+      const subObject = flattenObject(obj[parentKey]);
+      for (const subKey in subObject) {
+        res[parentKey + "." + subKey] = subObject[subKey];
+      }
+    } else res[parentKey] = obj[parentKey];
+  }
+  return res;
+};
+
+let testObj = {
+  Company: "GeeksforGeeks",
+  Address: "Noida",
+  contact: +91 - 999999999,
+  mentor: {
+    HTML: "GFG",
+    CSS: "GFG",
+    JavaScript: "GFG",
+    Backend: {
+      framework: ["nodejs", "express", "django"],
+      RDBMS: "MongoDB",
+    },
+  },
+};
+
+console.log(flattenObject(testObj));
