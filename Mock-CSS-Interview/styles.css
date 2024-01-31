@@ -1,0 +1,87 @@
+/* Mock-Frontend-CSS-Interview via https://www.youtube.com/watch?v=Rs7ARD5TCFU&t=1436s*/
+
+body {
+    background-color: #f6f9fc;
+}
+
+h1 {
+    text-align: center;;
+}
+
+h2 {
+    margin:0;
+}
+
+#wrapper {
+    display: flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.question > h3 {
+    color:#11967e;
+    transition: color 0.5s;
+}
+
+.question > h3:hover {
+    color:black;
+    cursor: pointer;
+}
+
+.question {
+    display: flex;
+    align-items: center;
+    /* box-shadow property: color | x-offset y-offset blur */
+    box-shadow: rgba(0, 0, 0, 20%) 0px 1px 2px;
+    border-right:25px solid #11967e;
+    border-radius:10px;
+    /* margin-bottom: 20px; 不能這樣寫, flex-box就用flex-box的方式解決才會有RWD 
+    往category + flex-direction and gap
+    */ 
+}
+
+.category {
+    flex-grow:1; /* %display for each flex-item  */
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.status {
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    margin:5px;
+}
+
+.correct {
+    background: linear-gradient(#04ff00, #369636);
+}
+
+.partially-correct {
+    background: linear-gradient(#fbf82b, #ffc63b);
+}
+
+.incorrect {
+    background: linear-gradient(#ff0000, #760000);
+}
+
+.unattempted {
+    border: 1px solid #6772e54d;
+}
+
+
+
+/* Reflection
+加強觀點
+- border
+- box-shadow 
+    - https://www.w3schools.com/cssref/playdemo.php?filename=playcss_box-shadow
+    - https://www.w3schools.com/cssref/css3_pr_box-shadow.php
+- gap
+- transition - 綠變黑，transition要放在綠色的那邊，在會有transition的效果
+- div是block element, 要把他們變成同一行(17:53) - 要把block element講出來
+- flex-grow 放在category(因為他才是被wrapper裝的flex item) (19:47)
+    - https://www.w3schools.com/cssref/tryit.php?filename=trycss3_flex-grow
+
+*/
