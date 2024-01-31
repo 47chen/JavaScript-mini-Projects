@@ -84,4 +84,11 @@ h2 {
 - flex-grow 放在category(因為他才是被wrapper裝的flex item) (19:47)
     - https://www.w3schools.com/cssref/tryit.php?filename=trycss3_flex-grow
 
+Takeaway
+transition: property second
+box-shadow: color | x-offset y-offset blur  
+flex-grow means % for flex items in the flex wrapper 
+use gap to make space for flex item
+
+
 */
