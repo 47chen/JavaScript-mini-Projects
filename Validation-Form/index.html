@@ -5,7 +5,8 @@
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
     <title>Validation Form</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="./script.js"></script>
+    <!-- <script defer src="./script.js"></script> -->
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -13,13 +14,27 @@
             <h1>Registration-Validate-Form</h1>
             <div class="input-container">
                 <label for="username">UserName</label>
-                <input id="'username" name="username" type="text">
+                <input value="123" id="username" name="username" type="text" required>
                 <div class="error"></div>
             </div>
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input id="email" name="email"  type="email">
+                <div class="error"></div>
+            </div>
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password">
+                <div class="error"></div>
+            </div>
+            <div class="input-container">
+                <label for="confirm-password">Confirm Password</label>
+                <input id="confirm-password" name="confirm-password" type="password">
+                <div class="error"></div>
+            </div>
+            <button type="submit">Sign Up</button> 
 
         </form>
     </div>
 </body>
 </html>
-
-input name - e.target

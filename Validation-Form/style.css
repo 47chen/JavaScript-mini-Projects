@@ -1,0 +1,61 @@
+body {
+    background: linear-gradient(to right, #9dd0e0, #9fe88a);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#form {
+    width: 400px;
+    margin: 20vh auto 0 auto;
+    padding:20px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    font-size:20px;
+}
+
+#form h1 {
+    color:#0f2027;
+    text-align: center;
+}
+
+#form button {
+    padding:10px;
+    margin:20px 10px 0 0;
+    width: 100%;
+    color:white;
+    background-color: rgb(41,57,194);
+    border: none;
+    border-radius: 4px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display:block;
+    font-size:15px;
+    padding:10px;
+}
+
+/* psedo class */
+.input-container input:focus {
+    outline:0; /* browser default is blue, we set it to none */
+}
+
+/* Add the sucess input */
+.input-container.success input {
+    border-color: #0ce386;
+}
+
+.input-container.error input {
+    border-color: #ff3860
+}
+
+.input-container .error {
+    color:#ff3860;
+    font-size:12px;
+    height:13px;
+}
