@@ -10,30 +10,29 @@
 </head>
 <body>
     <div class="container">
-        <form id="form" action="/">
-            <h1>Registration-Validate-Form</h1>
+        <form id="form" action='/'>
+            <h1>Validation Form</h1>
             <div class="input-container">
-                <label for="username">UserName</label>
-                <input value="123" id="username" name="username" type="text" required>
-                <div class="error"></div>
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text">
+                <div class="error-message"></div>
             </div>
             <div class="input-container">
                 <label for="email">Email</label>
-                <input id="email" name="email"  type="email">
-                <div class="error"></div>
+                <input id="email" name="email" type="text" >
+                <div class="error-message"></div>
             </div>
             <div class="input-container">
                 <label for="password">Password</label>
-                <input id="password" name="password" type="password">
-                <div class="error"></div>
+                <input id="password" name="password" type="text" >
+                <div class="error-message"></div>
             </div>
             <div class="input-container">
                 <label for="confirm-password">Confirm Password</label>
-                <input id="confirm-password" name="confirm-password" type="password">
-                <div class="error"></div>
+                <input id="confirm-password" name="confirm-password" type="text">
+                <div class="error-message"></div>
             </div>
-            <button type="submit">Sign Up</button> 
-
+            <button>Sign up</button>
         </form>
     </div>
 </body>

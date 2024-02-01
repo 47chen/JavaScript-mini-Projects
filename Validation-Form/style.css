@@ -3,7 +3,12 @@ body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-#form {
+* {
+    margin:0;
+    padding:0;
+}
+
+/* #form {
     width: 400px;
     margin: 20vh auto 0 auto;
     padding:20px;
@@ -38,24 +43,96 @@ body {
     display:block;
     font-size:15px;
     padding:10px;
-}
+} */
 
-/* psedo class */
+ /* psedo class 
 .input-container input:focus {
-    outline:0; /* browser default is blue, we set it to none */
-}
+    outline:0;  browser default is blue, we set it to none 
+} */
 
-/* Add the sucess input */
+ /* Add the sucess input 
 .input-container.success input {
     border-color: #0ce386;
-}
+} */
 
-.input-container.error input {
-    border-color: #ff3860
+/* .input-container.error input {
+    border-color: #e10e38
 }
 
 .input-container .error {
     color:#ff3860;
     font-size:12px;
-    height:13px;
+    height:1rem;
+} */
+
+
+#form {
+    width: 450px;
+    height: 60vh;
+    margin: 30vh auto 0 auto;
+    padding:20px;
+    background-color: whitesmoke;
+    border-radius: 4px;
 }
+
+#form > div {
+    font-size: 2;
+}
+
+#form > h1 {
+    text-align: center;
+    padding:20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    padding:10px 0px;
+    gap:2px;
+}
+
+.input-container label {
+    font-size: 25px;
+}
+
+.input-container input {
+    display: block;
+    padding:13px;
+    border-radius: 4px;
+    outline: 0;
+    border: none;
+    font-size: 18px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(6, 30, 244);
+    transition: background-color 1s;
+}
+
+button {
+    padding:20px;
+    margin: 20px 0px 0 0px;
+    border: none;
+    background-color: rgb(41,57,194);
+    color:white;
+    border-radius: 4px;
+    width: 100%
+}
+
+.input-container.error input {
+    border: 2px rgb(235, 70, 70) solid;
+}
+
+.input-container.success input {
+    border: 2px rgb(17, 225, 131) solid;
+}
+
+.input-container > div {
+    font-size: 15px;
+    color:rgb(235, 70, 70)
+}
+
+
+
+
