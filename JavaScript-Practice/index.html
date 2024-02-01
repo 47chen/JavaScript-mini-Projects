@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <!--link to the css file-->
+    <link rel="stylesheet" href="style.css">
+    
+    
+</head>
+<body>
+    <div id="outer">Click me
+        <div id="inner">Or me</div>
+      </div>
+      
+      <script>
+      document.getElementById('outer').addEventListener('click', function(event) {
+        console.log("currentTarget: ", event.currentTarget.id);
+        console.log("this: ", this.id);
+        console.log("target: ", event.target.id);
+      });
+      </script>
+</body>
+<!-- <script src="script.js">
+</script> -->
+</html>
