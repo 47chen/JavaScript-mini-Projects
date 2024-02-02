@@ -47,32 +47,35 @@ TODO:
 const wrapper = document.getElementById("movies-wrapper");
 const addMovies = async (movies) => {
   movies.forEach((movie) => {
-    let id = movie.id;
-    let link = movie.link;
-    let text = movie.text;
-    let imgUrl = movie.img;
+    // let id = movie.id;
+    // let link = movie.link;
+    // let text = movie.text;
+    // let imgUrl = movie.img;
+    // ✅ optimization 1. - destruct the movie
+    const { id, link, text, img } = movie;
 
     let div = document.createElement("div");
-    let img = document.createElement("img");
+    let movieImg = document.createElement("img");
     let movieId = document.createElement("h3");
     let movieLink = document.createElement("p");
     let movieText = document.createElement("p");
 
     div.classList.add("movie-card");
-    img.classList.add("movie-img");
+    movieImg.classList.add("movie-img");
     movieId.classList.add("movie-id");
     movieText.classList.add("movie-text");
     movieLink.classList.add("movie-link");
 
     // ⭐️ assign value to innerHTML | textContent | innerText
-    movieId.innerText = `id: ${id}`;
+    // ✅ optimization 2. - textContent more performant than innerText
+    movieId.textContent = `id: ${id}`;
     movieLink.innerHTML = `<strong>Link</strong>: ${link}`;
     movieText.textContent = `Text: ${text}`;
 
-    img.src = imgUrl;
-    img.alt = imgUrl;
+    movieImg.src = img;
+    movieImg.alt = img;
 
-    div.appendChild(img);
+    div.appendChild(movieImg);
     div.appendChild(movieId);
     div.appendChild(movieLink);
     div.appendChild(movieText);
