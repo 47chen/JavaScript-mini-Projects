@@ -208,3 +208,19 @@ const flattenArray2 = (arr) => {
 
 console.log(flattenArray2(arr));
 console.log("* ------------------------------------- *");
+/* TODO learn flatten object https://blog.theashishmaurya.me/flatting-an-object-and-array-using-recursion-and-other-methods*/
+
+/* 5. 🔥 Sleep function 🔥 */
+const sleep2 = (time) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(time);
+    }, time);
+  });
+};
+async function greeting() {
+  console.log("Hello");
+  await sleep2(5000);
+  console.log("bye");
+}
+greeting();
