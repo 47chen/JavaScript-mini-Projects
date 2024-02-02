@@ -1,4 +1,4 @@
-const url = "https://moviesverse1.p.rapidapi.com/movies/year/2023/1";
+const url = "https://moviesverse1.p.rapidapi.com/movies/1";
 const options = {
   method: "GET",
   headers: {
@@ -7,14 +7,28 @@ const options = {
   },
 };
 
-const fetchData = async () => {
+// TODO: Fetch data - hasOwnProperty | assign to variable
+
+let movieList = [];
+
+const fetchMovies = async () => {
   try {
     const response = await fetch(url, options);
-    const movies = await response.json();
-    console.log(movies);
+
+    if (!response.ok) throw new Error("Failed to fetch data");
+
+    const data = await response.json();
+
+    // check whether has props | can also put console.log to check
+    if (data.hasOwnProperty("movies")) {
+      movieList = data.movies;
+      console.log("Successfully fetch movie data", movieList);
+    } else {
+      console.log("No such property");
+    }
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching movies", error);
   }
 };
 
-fetchData();
+fetchMovies();
