@@ -39,3 +39,16 @@ const fetchMovies = async () => {
 };
 
 fetchMovies();
+
+const movies = [
+  { id: "movie1", img: "url1", link: "link1" },
+  { id: "movie2", img: "url2", link: "link2" },
+  { id: "movie3", img: "url3", link: "link3" },
+  { id: "movie4", img: "url4", link: "link5" },
+];
+// ⭐️ Filter by Props
+const filterMovieByProps = (movies, prop, value) =>
+  movies.filter((movie) => movie[prop] !== value);
+// 不能用movie.prop, before instance it has no props, but movie[prop] 可以當作要傳入的obj/array + key
+const filterMovie2 = filterMovieByProps(movies, "id", "movie2");
+console.log(filterMovie2);
