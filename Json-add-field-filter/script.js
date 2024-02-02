@@ -10,55 +10,32 @@ const options = {
 // TODO: Fetch data - hasOwnProperty |
 // map through each data.movies and add one new field via spread {...obj}
 // filter specific items
+let movieList = [];
 
 const fetchMovies = async () => {
   try {
-    const response = await fetch(url, options);
+    const resp = await fetch(url, options);
+    const data = await resp.json();
 
-    if (!response.ok) throw new Error("Failed to fetch data");
+    // ⭐️ check props exist
+    if (data.hasOwnProperty("movies")) {
+      movieList = data.movies;
+      console.log("Successfully fetch movies", movieList);
+    } else throw new Error("No such property");
 
-    const data = await response.json();
-    // ❌ this will only add new field on top level props
-    // addNewField(data, {tag: "movieFromRapidAPI"})
-
-    // ✅ map through each movie and add new field in it
-    let newData = data.movies.map((movie) => {
-      return { ...movie, tags: "moviesFromRapidAPI" };
+    // ⭐️add new field - map through movie and add field by {...movie, newField: 'value}
+    const movieWithOwner = movieList.map((movie) => {
+      return { ...movie, owner: "47chen" };
     });
-
-    // ✅ filter sepcific obj - such as person.age < 18, movie.name !== ...
-    let filterList = newData.filter((movie) => {
-      return movie.id === "the-underdoggs-dual-audio-hindi-esubs-webrip";
-    });
-
+    console.log(movieWithOwner);
+    // ⭐️filter specific items
+    const filterList = movieWithOwner.filter(
+      (movie) => movie.id !== "the-beekeeper-dual-audio-hindi"
+    );
     console.log(filterList);
-    console.log(data);
-    console.log(newData);
   } catch (error) {
-    console.error("Error fetching movies", error);
+    console.log(error);
   }
 };
 
 fetchMovies();
-
-// ❌ want to add a new field for each items in the obj
-// const addNewField = (obj, newField) => {
-//   return { ...obj, newField };
-// };
-
-/* Advanced - ✅ filter property  */
-const movies = [
-  { id: "movie1", img: "url1", link: "link1" },
-  { id: "movie2", img: "url2", link: "link2" },
-  { id: "movie3", img: "url3", link: "link3" },
-  { id: "movie4", img: "url4", link: "link5" },
-];
-
-const filterMoviesByProperty = (movies, prop, value) => {
-  //   return movies.filter((movie) => movie[prop] === value);
-  return movies.filter((movie) => movie[prop] !== value);
-};
-
-const filterMovie2 = filterMoviesByProperty(movies, "id", "movie2");
-
-console.log(filterMovie2);
