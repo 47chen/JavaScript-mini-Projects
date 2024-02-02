@@ -171,3 +171,40 @@ const sleep = (time) => {
 const sleepPromises = [sleep(1000), sleep(2000), sleep(3000)];
 const results = promiseAll(sleepPromises);
 results.then((values) => console.log(values)).catch((err) => console.log(err));
+
+/* 4. 🔥 Flatten Array using Reduce | Recursive 🔥 */
+console.log("* ------------------------------------- *");
+const arr = [1, 2, [3, 4, [5, 6]], [7], 8, 9];
+
+// build-in function flat()
+const res = arr.flat(Infinity);
+console.log(res);
+
+// ✅ use reduce(set init as []), and concat all item(check whether is array) or element
+const flattenArray = (arr) => {
+  return arr.reduce((result, curItem) => {
+    return result.concat(
+      Array.isArray(curItem) ? flattenArray(curItem) : curItem
+    );
+  }, []);
+};
+
+console.log(flattenArray(arr));
+
+// ✅ use normal function w/o using build-in array function
+const flattenArray2 = (arr) => {
+  const res = [];
+
+  const helper = (arr) => {
+    for (const key in arr) {
+      if (Array.isArray(arr[key])) helper(arr[key]);
+      else res.push(arr[key]);
+    }
+  };
+
+  helper(arr);
+  return res;
+};
+
+console.log(flattenArray2(arr));
+console.log("* ------------------------------------- *");
