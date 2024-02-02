@@ -147,7 +147,8 @@ const promiseAll = function (promises_array) {
             resolve(results);
           }
         })
-        .catch((err) => reject(new Error("Something went wrong!")));
+        .catch((err) => reject(new Error("Something went wrong!", err)));
+      // 不可以直接catch(reject)
     });
   });
 };
@@ -158,3 +159,15 @@ const result2 = promiseAll([...promises, promise4]);
 result2.then((res) => console.log(res)).catch((err) => console.log(err));
 const result3 = promiseAll([promise2, promise3]);
 result3.then((res) => console.log(res)).catch((err) => console.log(err));
+
+const sleep = (time) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(time);
+    }, time);
+  });
+};
+
+const sleepPromises = [sleep(1000), sleep(2000), sleep(3000)];
+const results = promiseAll(sleepPromises);
+results.then((values) => console.log(values)).catch((err) => console.log(err));
