@@ -6,7 +6,8 @@
 
 <p>Example list:</p>
 <ul id="myList"><li>Coffee</li><li>Tea</li><li>Tea1</li><li>Tea2</li><li>Tea3</li><li>Tea4</li></ul>
-<button id='reset' onclick="removeAllChild()">reset all child</button>
+<button id='reset' onClick="removeAllChild()">reset all child</button>
+<button id='removeOne'>reset One child</button>
 
 <p>The HTML content of the list's first child node is:</p>
 <p id="demo"></p>
@@ -18,16 +19,28 @@ document.getElementById("demo").innerHTML = text;
 
 let btn = document.getElementById('reset');
 let list = document.getElementById('myList');
+let btnTwo = document.getElementById('removeOne');
 
 const removeAllChild = () => {
-	let child = list.firstChild;
+    let child = list.firstChild;
+    console.log(child.innerText);
     while(child) {
-    	list.removeChild(child);
+        list.removeChild(child);
         child = list.firstChild;
     }
     alert('Ready to clear all child by traditional way');
 }
 
+const removeOneChild = () => {
+    let child = list.lastChild;
+    if(child === null) throw new Error('no child anymore')
+    console.log(child.innerText);
+    list.removeChild(child);
+}
+
+btnTwo.addEventListener('click', (e)=> {
+    removeOneChild();
+});
 
 </script>
 
