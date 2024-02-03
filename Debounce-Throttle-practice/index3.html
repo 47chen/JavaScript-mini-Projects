@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <title>Todo List</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="domFunc.js"></script>
 </head>
 <body>
-    <input type="text">
-    <br>
     <div class="container">
-        <h2>Default</h2>
-        <span id="default"></span>
+        <div style="background-color: antiquewhite;">
+            <input id="input-field" type="text">
+            <h1>Normal</h1>
+            <span id="normal"></span>
+        </div>
+        <div style="background-color: aquamarine;">
+            <h1>Debounce</h1>
+            <span id="debounce"></span>
+        </div>
+        <div style="background-color: bisque;">
+            <h1>Throttle</h1>
+            <span id="throttle"></span>
+        </div>
+        
     </div>
-    <div class="container">
-        <h2>Debounce</h2>
-        <span id="debounce"></span>
-    </div>
-    <div class="container">
-        <h2>Throttle</h2>
-        <span id="throttle"></span>
-    </div>
-    <script src="domFunc.js">
-    </script>
 </body>
 </html>

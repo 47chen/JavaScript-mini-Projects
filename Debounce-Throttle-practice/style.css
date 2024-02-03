@@ -1,4 +1,4 @@
-input {
+/* input {
     position: relative;
     left:45%;
 }
@@ -15,4 +15,52 @@ h2 {
     
     margin:0px;
 }
+ */
+ /* <div class="container">
+ <div style="background-color: antiquewhite;">
+     <input id="input-field" type="text">
+     <h1>Normal</h1>
+     <span id="normal"></span>
+ </div>
+ <div style="background-color: aquamarine;">
+     <h1>Decounce</h1>
+     <span id="decounce"></span>
+ </div>
+ <div style="background-color: bisque;">
+     <h1>Throttle</h1>
+     <span id="throttle"></span>
+ </div>
+</div> */
 
+* {
+    margin:0;
+    padding:0;
+}
+
+.container {
+    display:grid;
+    grid-template-columns: auto auto auto;
+    gap:10px;
+}
+
+
+input {
+    padding:15px;
+}
+
+input ~ h1 {
+    color:blue
+}
+
+h1 ~ span {
+    size: 30px;
+    font-size:12px;
+}
+
+h1 ~ span::before {
+    content:'👉';
+}
+
+.container > div {
+    height: 200px;
+}
