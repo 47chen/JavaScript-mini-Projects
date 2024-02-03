@@ -140,3 +140,42 @@ const throttle = (cb, delay = 1000) => {
 };
 
 /* 8. ⭐️⭐️⭐️ deepEqual - 明天來寫 */
+
+/* 9. Implement Promise.race 
+- accept an iterable promises ex. array, map, set
+- and return the first one which is fulfilled or reject
+*/
+const promise1 = new Promise((resolve, reject) => resolve(3));
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("resolve after 2 second");
+  }, 2000);
+});
+const promise3 = new Promise((resolve, reject) =>
+  setTimeout(() => {
+    reject("This one is rejected");
+  }, 1000)
+);
+function promiseRace(promise_array) {
+  // ⭐️ 回傳最先fulfilled or rejected => 跟順序沒有關係，誰先resolve/reject誰先return
+  // iterate through the promise_array
+  // whenever there is one resovle or reject, we return that promise
+  // promise.all return an array of promises
+  // promise.race return a promise that is firstly resolved or rejected
+  // ❌ 我以為value => value就可以當作回傳值，但promiseRace要回傳一個promise!
+  // promise_array.forEach((promise) => {
+  //   promise.then((value) => value).catch((err) => err);
+  // });
+  // ✅ return new Promise
+  return new Promise((resolve, reject) => {
+    for (const promise of promise_array) {
+      promise.then((val) => resolve(val)).catch((err) => reject(err));
+    }
+  });
+}
+const results = promiseRace([promise3, promise2]); // This one is rejected
+const results2 = promiseRace([promise2, promise3]); // after 2 sec, return resolve after 2 second
+results.then((val) => console.log(val)).catch((err) => console.log(err));
+results2.then((val) => console.log(val)).catch((err) => console.log(err));
+
+/* 10. call() apply() bind() | this */
