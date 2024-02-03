@@ -139,7 +139,77 @@ const throttle = (cb, delay = 1000) => {
   };
 };
 
-/* 8. ⭐️⭐️⭐️ deepEqual - 明天來寫 */
+/* 8. ⭐️⭐️⭐️ deepEqual - 明天來寫 
+algorithms steps - function deepEqual(value, other)
+*/
+const deepEqual = function (o1, o2) {
+  // 👉 check type
+  if (typeof o1 !== typeof o2) {
+    return false;
+  }
+
+  // 👉 check primitive data and whether is null or not
+  if (typeof o1 !== "object" || o1 === null || o2 === null) {
+    return o1 === o2;
+  }
+
+  // 👉 check both array
+  if (Array.isArray(o1) !== Array.isArray(o2)) {
+    return false;
+  }
+
+  // 👉 if array check - same length | same element
+  if (Array.isArray(o1)) {
+    if (o1.length !== o2.length) {
+      return false;
+    }
+
+    for (var i = 0; i < o1.length; i++) {
+      if (!deepEqual(o1[i], o2[i])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  // 👉 到這邊就確定是object了, check key.length | value in object
+  const keys1 = Object.keys(o1);
+  const keys2 = Object.keys(o2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (var key of keys1) {
+    if (!keys2.includes(key) || !deepEqual(o1[key], o2[key])) {
+      return false;
+    }
+  }
+
+  return true;
+};
+/* primitive data check */
+console.log("------ check prim data ------");
+console.log(deepEqual(null, null)); // true
+console.log(deepEqual(NaN, NaN)); // true
+console.log(deepEqual(NaN, 1)); // false
+console.log(deepEqual(2, 1)); // false
+console.log(deepEqual(2, true)); // false
+/* object check */
+console.log("------ check object data ------");
+console.log(deepEqual([1], [1])); // true
+console.log(deepEqual([1], [2])); // false
+console.log(deepEqual([1], [1, 2])); // false
+console.log(deepEqual([1], 5)); // false
+const ori_obj = { a: 12, b: 1 };
+const sha2_obj = ori_obj; // shallow copy
+console.log(deepEqual(ori_obj, sha2_obj), ori_obj, sha2_obj); // true
+const sha_obj = Object.assign({}, ori_obj);
+console.log(deepEqual(ori_obj, sha_obj), "sha vs obj"); // true
+console.log(deepEqual({ a: 12 }, { a: 12 })); // ✅ true
+console.log(deepEqual({ a: 12 }, { b: 12 })); // false
+console.log(deepEqual({ a: 12 }, { a: 1 })); // false
 
 /* 9. Implement Promise.race 
 - accept an iterable promises ex. array, map, set
@@ -151,11 +221,11 @@ const promise2 = new Promise((resolve, reject) => {
     resolve("resolve after 2 second");
   }, 2000);
 });
-const promise3 = new Promise((resolve, reject) =>
-  setTimeout(() => {
-    reject("This one is rejected");
-  }, 1000)
-);
+// const promise3 = new Promise((resolve, reject) =>
+//   setTimeout(() => {
+//     reject("This one is rejected");
+//   }, 1000)
+// );
 function promiseRace(promise_array) {
   // ⭐️ 回傳最先fulfilled or rejected => 跟順序沒有關係，誰先resolve/reject誰先return
   // iterate through the promise_array
@@ -173,9 +243,9 @@ function promiseRace(promise_array) {
     }
   });
 }
-const results = promiseRace([promise3, promise2]); // This one is rejected
-const results2 = promiseRace([promise2, promise3]); // after 2 sec, return resolve after 2 second
-results.then((val) => console.log(val)).catch((err) => console.log(err));
-results2.then((val) => console.log(val)).catch((err) => console.log(err));
+// const results = promiseRace([promise3, promise2]); // This one is rejected
+// const results2 = promiseRace([promise2, promise3]); // after 2 sec, return resolve after 2 second
+// results.then((val) => console.log(val)).catch((err) => console.log(err));
+// results2.then((val) => console.log(val)).catch((err) => console.log(err));
 
 /* 10. call() apply() bind() | this */
