@@ -1,0 +1,45 @@
+/* div class="gallery">
+    <div class="image">
+      <img src="image1.jpg" alt="Image 1">
+      <h3>Image 1</h3>
+    </div>
+    <div class="image">
+        <img src="image1.jpg" alt="Image 1">
+        <h3>Image 2</h3>
+    </div> */
+
+* {
+    margin:0px;
+    padding:0px;
+}
+
+body {
+    background-color: rgb(243, 230, 214);
+    padding:20px;
+
+}
+
+.gallery {
+    display:grid;
+    /* 4*3 (4col * 3row) */
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 200px 200px 200px;
+    gap: 30px 20px; /* gap: 20px x+y offset | gap: y-offset | x-offset */
+}
+
+.image {
+    background-color: azure;
+    box-shadow: 5px 5px rgb(183, 182, 182);
+    padding: 10px;
+    border-radius: 4px;
+
+}
+
+
+/* 
+grid-container
+- display:grid | inline-grid
+- grid-template-columns:auto auto auto (3 columns) -> column width
+- grid-tepplate-rows: auto auto auto (3 rows) -> row height
+- gap:/* gap: 20px x&&y offset | gap: y-offset | x-offset 
+*/
