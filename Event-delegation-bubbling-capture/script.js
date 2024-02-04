@@ -20,11 +20,11 @@ ex. #container當container - currentTarget = <div id='container'></div>
 -- 總結
 when we add lots of event listeners within  parent -> child-> grand-child ...
 1. capturing | bubbling 是event傳遞的兩個原則(跟DOM 是Tree有關) 
-- lastChild element會一路往上trigger event listener (看隔壁event-bc.html)
+- lastChild element會一路往上(bubbling) trigger event listener (看隔壁event-bc.html)
 2. 當事件傳到target本身，沒有分capturing and bubbling
 3. 透過event-delegation, 我們可以直接對(parent)做eventListener
 - 提高效率
-- 透過冒泡效率，自動由parent element往下傳
+- 透過冒泡捕獲原則，自動由parent element往下傳
 */
 
 container.addEventListener("click", (e) => {
