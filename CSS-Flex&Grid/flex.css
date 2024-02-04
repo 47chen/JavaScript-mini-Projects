@@ -1,0 +1,39 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+/* flex-container */
+.gallery {
+    background-color: antiquewhite;
+    display:flex;
+    margin:20px;
+    padding:10px;
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+.image {
+    margin:5px 0;
+    height:200px;
+    flex: 1 0 calc(33% - 8px); /* grow-shrink-baseItem width */
+    border-radius: 4px;
+    border: 1px solid gainsboro;
+    box-shadow: gray 5px 5px;
+}
+
+/*  Takeaway
+- split into 3 part can use calc(33%)
+- flex property:(flex-grow) (flex-shrink) (flex-item-base-width)
+*/
+
+
+
