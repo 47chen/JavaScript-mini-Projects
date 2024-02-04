@@ -22,28 +22,66 @@
     background-color: #e5e5e5;
 } */
 
-.auto-complete-container {
-    display: inline-block;
-    position: relative;
-  }
-  
-  #list-container {
-    list-style: none;
-    z-index: 1;
-    background-color: antiquewhite;
-    margin: 0;
-    padding: 0;
+/* TODO
+.autocomplete container
+pos:relative
+display:inline-block
+
+#autocomlete-list
+list-style:none
+position:absolute
+z-index:1
+width:100%
+
+li border padding cursor
+li hover change background color
+
+<div class="autocomplete">
+      <input id="auto-complete-input" type="text" placeholder="type something...">
+      <ul id="auto-complete-list">
+        <li>mock</li>
+      </ul>
+    </div>
+*/
+
+* {
+    margin:0px;
+    padding:0px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.autocomplete {
+    top:20px;
+    position:relative;
+}
+
+#auto-complete-input {
+    padding:10px;
+    font-size: 20px;
+    background-color: beige;
+    border-radius: 4px;
+    border: 1px solid lightgrey;
+}
+
+#auto-complete-list {
+    position: absolute;
+    z-index:1;
     width: 100%;
-    /* position: absolute; */
-  }
-  
-  #list-container li {
-    padding: 10px 0;
-    display: block;
-    border: 1px solid #333c;
-  }
-  
-  #list-container li:hover {
-    background-color: gray;
-  }
-  
+    list-style: none;
+}
+
+#auto-complete-list li {
+    font-size: 18px;
+    border: 1px solid gray;
+    padding:10px;
+    color:rgb(28, 28, 28);
+    transition: background-color 0.25s ease;
+}
+
+#auto-complete-list li:hover {
+    background-color:gainsboro;
+}

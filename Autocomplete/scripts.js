@@ -1,48 +1,3 @@
-// const suggestions = [
-//   "Apple",
-//   "Banana",
-//   "Cherry",
-//   "Date",
-//   "Grape",
-//   "Lemon",
-//   "Orange",
-//   "Peach",
-//   "Pear",
-//   "Strawberry",
-// ];
-
-// const input = document.getElementById("autocomplete-input");
-// const list = document.getElementById("autocomplete-list");
-
-// input.addEventListener("input", () => {
-//   console.log("123");
-//   const inputValue = input.value.toLowerCase();
-//   clearPrevList();
-
-//   // filter and display matching suggestions
-//   const filterSuggestions = suggestions.filter((suggestion) =>
-//     suggestion.toLowerCase().includes(inputValue)
-//   );
-
-//   // then we based on the filter suggestions to paint the html element
-//   filterSuggestions.forEach((suggestion) => {
-//     // create li element and assign suggestion to DOM node
-//     const listItem = document.createElement("li");
-//     listItem.textContent = suggestion;
-
-//     listItem.addEventListener("click", () => {
-//       input.value = suggestion;
-//       clearPrevList();
-//     });
-//     list.appendChild(listItem);
-//   });
-// });
-
-// function clearPrevList() {
-//   list.innerHTML = "";
-// }
-
-// Sample data for autocomplete
 const suggestions = [
   "Apple",
   "Banana",
@@ -56,58 +11,48 @@ const suggestions = [
   "Strawberry",
 ];
 
-// Get input and list elements
-// const input = document.getElementById("autocomplete-input");
-// const list = document.getElementById("autocomplete-list");
+/* 
+TODO --- always clearify all the needs and edge cases first
+1. get all ref from DOM
+2. add eventListener on input
+3. filter + includes value -> to create the filter li
+4. clearInput() when use click li | ⭐️ when input change - avoid re-append child
+5. assign suggestion value to li.innerText
+6. when click li, assign li value to input
+*/
 
-// // Event listener for input changes
-// input.addEventListener("input", function (e) {
-//   console.log("successfully add listner");
-//   const inputValue = e.target.value.toLowerCase();
-//   // Clear previous suggestions
-//   list.innerHTML = "";
+const $input = document.getElementById("auto-complete-input");
+const $list = document.getElementById("auto-complete-list");
 
-//   // Filter and display matching suggestions
-//   const filteredSuggestions = suggestions.filter((suggestion) =>
-//     suggestion.toLowerCase().includes(inputValue)
-//   );
-//   filteredSuggestions.forEach((suggestion) => {
-//     const listItem = document.createElement("li");
-//     listItem.textContent = suggestion;
-//     // Add click event to populate input with clicked suggestion
-//     listItem.addEventListener("click", function () {
-//       console.log("123");
-//       input.value = suggestion;
-//       list.innerHTML = "";
-//     });
-//     list.appendChild(listItem);
-//   });
-// });
-const input = document.getElementById("auto-complete-input");
-const list = document.getElementById("list-container");
-console.log(typeof list);
-
-input.addEventListener("input", () => {
-  const inputValue = input.value.toLowerCase();
+$input.addEventListener("input", () => {
+  // - get the input value
+  const inputValue = $input.value.toLowerCase();
   clearPrevList();
-  console.log("running input eventListener");
-  const filterList = suggestions.filter((suggestion) =>
-    suggestion.toLowerCase().includes(inputValue)
-  );
-  console.log(filterList);
-
-  filterList.forEach((fList) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = fList;
-    listItem.addEventListener("click", () => {
-      input.value = fList;
-      clearPrevList();
-    });
-    console.log(typeof list);
-    list.appendChild(listItem);
+  // - use input value to filter the sugguest list
+  // - 🔥 string.includes() return true if find any char match
+  // - array.includes() return true only if match all element
+  const filerList = suggestions.filter((suggestion) => {
+    return suggestion.toLowerCase().includes(inputValue);
   });
+
+  // 有了filterList, display it on $list with new li
+  filerList.forEach((suggestion) => {
+    const li = document.createElement("li");
+    li.innerText = suggestion;
+    $list.appendChild(li);
+    // add event listerner to each li - but we can also add event delegation outside on parent elements
+  });
+
+  // bug fix - onchange input will re-display filter list
 });
 
-function clearPrevList() {
-  list.innerHTML = "";
-}
+// 🔥 event delegation - 也可以在每個li上加上addEventListener, 但效率會比較差
+// 把eventListener 放在$list(parent element)上 + e.target 去refer element更有效率
+
+$list.addEventListener("click", (e) => {
+  $input.value = e.target.innerText;
+  console.log(e.target, $input);
+  clearPrevList();
+});
+
+const clearPrevList = () => ($list.innerHTML = "");
