@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事件傳遞機制</title>
+
+<style>
+  .outer {
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+  }
+
+  .inner {
+    width: 100px;
+    height: 100px;
+    background-color: lightseagreen;
+  }
+</style>
+</head>
+<body>
+  <div class="outer">
+    <div class="inner">
+      <button class="btn">button</button>
+  </div>
+</div>
+<script>
+  addEvent1('.outer'); // after click - print .outer
+  addEvent1('.inner'); // after click - print .inner .outer
+  addEvent1('.btn'); // after click - print .btn .inner .outer
+  
+  // event bubbling - the button will trigger .btn .inner .outer
+  function addEvent1(className) {
+    document.querySelector(className)
+      .addEventListener('click', function (e) {
+          console.log(className);
+      })
+  };
+
+  function addEvent2(className) {
+    document.querySelector(className).addEventListener('click', (e)=>{
+        e.stopPropagation(); 
+        // if bubbling stop event from going above
+        // if capturing stop event from going way down to child
+        console.log(className);
+    })
+  }
+</script>
+</body>
+</html>
