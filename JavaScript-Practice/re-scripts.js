@@ -189,6 +189,14 @@ const flattenArray = (arr) => {
   }, []);
 };
 
+const flatArray3 = (arr) => {
+  return arr.reduce((result, item) => {
+    return Array.isArray(item)
+      ? [...result, ...flatArray3(item)]
+      : [...result, item];
+  }, []);
+};
+
 console.log(flattenArray(arr));
 
 // ✅ use normal function w/o using build-in array function
@@ -211,16 +219,88 @@ console.log("* ------------------------------------- *");
 /* TODO learn flatten object https://blog.theashishmaurya.me/flatting-an-object-and-array-using-recursion-and-other-methods*/
 
 /* 5. 🔥 Sleep function 🔥 */
-const sleep2 = (time) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(time);
-    }, time);
-  });
+// const sleep2 = (time) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(time);
+//     }, time);
+//   });
+// };
+// async function greeting() {
+//   console.log("Hello");
+//   await sleep2(5000);
+//   console.log("bye");
+// }
+// greeting();
+
+/* 6. 🔥 call() apply() bind() + This 🔥 
+⭐️ Assign object to "this" keyword
+*/
+
+// Base Case
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  },
 };
-async function greeting() {
-  console.log("Hello");
-  await sleep2(5000);
-  console.log("bye");
-}
-greeting();
+console.log(" --- Base Case ---");
+console.log(person.fullName()); // John Doe
+
+const people = {
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  },
+};
+/* -------------- call(obj, arg1, arg2, ...) -------------- */
+/* -------------- apply(obj, [arg1,arg2,...]) -------------- */
+/* 🔥 assign object to 'this' whose function invoke it */
+const people1 = {
+  lastName: "Timmmy",
+  firstName: "Hank",
+};
+
+const people2 = {
+  lastName: "Tommy",
+  firstName: "Shellby",
+};
+
+// ⭐️ call(object) / apply(obj) to refer 'this' keyword to the function who invoked
+console.log(people.fullName.call(people1)); // Hank Timmy
+console.log(people.fullName.call(people2)); // Shellby Tommy
+console.log(people.fullName.apply(people2)); // Shellby Tommy
+// // 👉 it can takes other arguments .call(obj, arg1, arg2) for assign to function
+const obj = { name: "Johnny" };
+const obj2 = { name: "Tommy" };
+const greeting = function (a, b) {
+  return `${a} ${this.name}. ${b}`;
+};
+console.log(greeting.call(obj, "Hello", "How are you doing today?"));
+// Hello Johnny. How are you doing today?
+// ⭐️ apply(obj, [arg1, arg2]) - almost same as call() but accept array of args
+console.log(greeting.apply(obj2, ["Hello", "How are you doing today?"]));
+// Hello Tommy. How are you doing today?
+
+console.log(Math.max([1, 2, 100])); //NaN - js can not find the max in array
+// but we can use apply to sign it to an array, with obj null, arg = numbers[]
+const numbers = [1, 2, 3, 4, 1000];
+console.log(Math.max.apply(null, numbers)); // 1000
+console.log("* ----------- call() apply() bind() ----------- ");
+
+// ⭐️ bind() method create a new function which wrap the original object
+const bindGreet = greeting.bind(obj);
+const bindGreet2 = greeting.bind(obj2);
+console.log(bindGreet("Bind() Hello", "How is your day?"));
+// Bind() Hello Johnny. How is your day?
+console.log(bindGreet2("Bind() Hello", "How is your day?"));
+// Bind() Hello Tommy. How is your day?
+
+/* Sumup
+🟢 The call, bind, and apply methods can be used to 
+set the 'this' keyword independent of how a function is called.
+
+- function.bind(thisArg, optionalArguments)
+- function.apply(thisArg, [argumentsArr])
+- function.call(thisArg, argu1, argu2, ...)
+*/
