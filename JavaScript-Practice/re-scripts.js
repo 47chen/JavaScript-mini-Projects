@@ -327,3 +327,56 @@ async function wakeUp(time) {
   }
 }
 wakeUp(3000);
+
+/* 7. 🔥 Flatten Object(Json) */
+const sample = {
+  isbn: "123-456-222",
+  author: {
+    lastname: "Doe",
+    firstname: "Jane",
+    address: {
+      street: "3856 Pooz Street",
+      city: "South River",
+      state: "New Jersey",
+      counrty: "United State",
+    },
+  },
+  title: "The Ultimate Database Study Guide",
+  category: ["Non-Fiction", "Technology"],
+};
+
+/*
+⭐️Algorithms
+
+1. use a variable res to wrap the result as the return
+2. recursive function
+  -- get key via for(key in obj)
+  -- check value(obj[key]) typeof === 'object' and not array
+  if yes(obj) - do recusive for the obj[key] = value
+  🟢🟢🟢注意 [key]: obj[key] 是dynamic nature of props in js
+  - 如果用key: obj[key], 那object會變成{'key': value..}
+  - object 跟 map的差別就是
+  -- object的key會自動轉成字串 no matter what you put as key
+  -- 會造成conflict like Number(123) and '123' 會被當成同樣的key
+  -- map不會 just like HashMap in Java
+  if no(not obj) - directly push it into res by ...spread operator
+*/
+
+const flatten_object = (object) => {
+  let res = {};
+  const dfs = (obj) => {
+    for (const key in obj) {
+      if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+        dfs(obj[key]);
+      } else {
+        res = { ...res, [key]: obj[key] };
+      }
+    }
+    return res;
+  };
+
+  dfs(object);
+  return res;
+};
+
+console.log(flatten_object(sample));
