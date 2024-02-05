@@ -8,22 +8,22 @@
   }
   /* 1. flex-box with centering in justify-content and align-items */
   .outer1 {
-    background-color: antiquewhite;
+    display:flex;
     width: 400px;
     height: 400px;
-    display: flex;
+    background-color: antiquewhite;
     justify-content: center;
     align-items: center;
   }
   /* 2. flex-box with margin-auto in child element */
   
   .outer2 {
-    background-color: aquamarine;
+    background-color: aqua;
     width: 400px;
     height: 400px;
     display: flex;
   }
-  
+
   .inner2 {
     margin: auto;
   }
@@ -31,18 +31,20 @@
   /* 3. position with transition */
   
   .outer3 {
-    background-color: brown;
+    background-color:brown;
+    color:white;
+    position: relative;
     width: 400px;
     height: 400px;
-    position: relative;
   }
-  
+
   .inner3 {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    left:50%;
+    top:50%;
     transform: translate(-50%, -50%);
   }
+
   
   /* 4. Text-align in parent, and line-height in child */
   .outer4 {
@@ -57,18 +59,26 @@
   }
   /* ---- ---- ---- ---- ---- ---- -TODO List CSS - ---- ---- ---- ---- ---- ---- ---- ---- */
   
-  .list-item {
-    width: 150px;
-    background-color: aquamarine;
-  }
-  
-  li.checked {
-    text-decoration: line-through;
-    background-color: gray;
-    list-style: circle;
-  }
-  
-  li:hover {
-    cursor: pointer;
-  }
-  
+#list-container {
+  background-color: aliceblue;
+  width: 300px;
+}
+
+#list-container li {
+  list-style: none;
+  padding: 10px 0;
+  font-weight: 400;
+}
+
+#list-container li:hover {
+  cursor: pointer;
+}
+
+#list-container .checked {
+  text-decoration: line-through;
+  color:gray
+}
+
+#list-container span:hover {
+  cursor: grab;
+}
