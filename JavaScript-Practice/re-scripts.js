@@ -295,7 +295,6 @@ console.log(bindGreet("Bind() Hello", "How is your day?"));
 // Bind() Hello Johnny. How is your day?
 console.log(bindGreet2("Bind() Hello", "How is your day?"));
 // Bind() Hello Tommy. How is your day?
-
 /* Sumup
 🟢 The call, bind, and apply methods can be used to 
 set the 'this' keyword independent of how a function is called.
@@ -304,3 +303,27 @@ set the 'this' keyword independent of how a function is called.
 - function.apply(thisArg, [argumentsArr])
 - function.call(thisArg, argu1, argu2, ...)
 */
+
+const sleepy = (time) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("wake up after " + time + " ms");
+    }, time);
+  });
+};
+
+const result5 = sleepy(5000);
+// ⭐️⭐️ 每次跟promise有關的function都忘記他是回傳一個promise, 需要用.then() or try catch 去接他
+// 🔥 .then()
+result5.then((val) => console.log(val));
+
+// 🔥async await try catch
+async function wakeUp(time) {
+  try {
+    const message = await sleepy(time);
+    console.log(message);
+  } catch (error) {
+    throw error;
+  }
+}
+wakeUp(3000);
