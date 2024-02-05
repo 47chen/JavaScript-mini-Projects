@@ -379,4 +379,37 @@ const flatten_object = (object) => {
   return res;
 };
 
-console.log(flatten_object(sample));
+// console.log(flatten_object(sample));
+
+let testObj = {
+  Company: "GeeksforGeeks",
+  Address: "Noida",
+  contact: +91 - 999999999,
+  mentor: {
+    HTML: "GFG",
+    CSS: "GFG",
+    JavaScript: "GFG",
+    Backend: {
+      framework: ["nodejs", "express", "django"],
+      RDBMS: "MongoDB",
+    },
+  },
+};
+
+function flat_object2(obj) {
+  const res = {};
+
+  for (const parentKey in obj) {
+    // check whether it is a object and not array
+    if (typeof obj[parentKey] === "object" && !Array.isArray(obj[parentKey])) {
+      const subObject = flat_object2(obj[parentKey]);
+      for (const subKey in subObject) {
+        res[parentKey + "." + subKey] = subObject[subKey];
+      }
+    } else res[parentKey] = obj[parentKey];
+  }
+  return res;
+}
+
+console.log(flat_object2(sample));
+console.log(flat_object2(testObj));
