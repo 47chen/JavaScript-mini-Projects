@@ -5,7 +5,14 @@
     <title>Gallery Movies w/ Autocomplete search</title>
     <!--link to the css file-->
     <link rel="stylesheet" href="style.css">
-    <script defer src="./script.js"></script>
+    <!-- 🔥 ~~~~HTML parse==|block parsing process遇到script下載+執行|結束才繼續parseHTML 
+    通常會把script w/o async defer放在body前，才不會有讀不到DOM / eventLisener的問題
+    -->
+    <!-- <script src="./script.js"></script> -->
+    <!-- 🔥 跟上面很像，唯一差別是會邊parse邊下載script，下載完後執行script(執行的過程會中斷parsing HTML) -->
+    <script async src="./script.js"></script>
+    <!-- 🔥 HTML parsing的同時也會下載script, parsing完HTML之後再執行script -->
+    <script async src="./script.js"></script>
 </head>
 <body>
     <div class="flex-container">
